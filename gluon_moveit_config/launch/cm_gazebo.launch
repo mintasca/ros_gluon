@@ -1,0 +1,26 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find gluon)/urdf/gluon_moveit_sim_pos.urdf -urdf -model gluon"
+    output="screen" />
+
+  <!-- Load ther URDF into the ROS Parameter Server -->
+  <param name="robot_description" textfile="$(find gluon)/urdf/gluon_moveit_sim_pos.urdf" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find gluon_moveit_config)/config/gluon_controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller gluon_controller"/>
+
+</launch>

@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="gluon">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="gluon">
+        <joint name="dummy_joint" />
+        <joint name="axis_joint_1" />
+        <joint name="axis_joint_2" />
+        <joint name="axis_joint_3" />
+        <joint name="axis_joint_4" />
+        <joint name="axis_joint_5" />
+        <joint name="axis_joint_6" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="home_pose" group="gluon">
+        <joint name="axis_joint_1" value="0" />
+        <joint name="axis_joint_2" value="0" />
+        <joint name="axis_joint_3" value="0" />
+        <joint name="axis_joint_4" value="0" />
+        <joint name="axis_joint_5" value="0" />
+        <joint name="axis_joint_6" value="0" />
+    </group_state>
+    <group_state name="test_pose-1" group="gluon">
+        <joint name="axis_joint_1" value="1.6493" />
+        <joint name="axis_joint_2" value="0.8593" />
+        <joint name="axis_joint_3" value="1.4952" />
+        <joint name="axis_joint_4" value="1.711" />
+        <joint name="axis_joint_5" value="-1.2177" />
+        <joint name="axis_joint_6" value="0" />
+    </group_state>
+    <group_state name="test_pose-2" group="gluon">
+        <joint name="axis_joint_1" value="-1.6802" />
+        <joint name="axis_joint_2" value="-0.8764" />
+        <joint name="axis_joint_3" value="1.5877" />
+        <joint name="axis_joint_4" value="-0.4778" />
+        <joint name="axis_joint_5" value="-1.2177" />
+        <joint name="axis_joint_6" value="0" />
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="end_effector" parent_link="6_Link" group="gluon" parent_group="gluon" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="dummy" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="1_Link" link2="2_Link" reason="Adjacent" />
+    <disable_collisions link1="1_Link" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="2_Link" link2="3_Link" reason="Adjacent" />
+    <disable_collisions link1="2_Link" link2="4_Link" reason="Never" />
+    <disable_collisions link1="2_Link" link2="5_Link" reason="Never" />
+    <disable_collisions link1="2_Link" link2="6_Link" reason="Never" />
+    <disable_collisions link1="2_Link" link2="base_link" reason="Never" />
+    <disable_collisions link1="3_Link" link2="4_Link" reason="Adjacent" />
+    <disable_collisions link1="3_Link" link2="5_Link" reason="Never" />
+    <disable_collisions link1="3_Link" link2="6_Link" reason="Never" />
+    <disable_collisions link1="4_Link" link2="5_Link" reason="Adjacent" />
+    <disable_collisions link1="4_Link" link2="6_Link" reason="Never" />
+    <disable_collisions link1="5_Link" link2="6_Link" reason="Adjacent" />
+</robot>

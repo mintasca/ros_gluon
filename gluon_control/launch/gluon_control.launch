@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- GDB functionality -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <!-- Load example URDF -->
+  <param name="robot_description" textfile="$(find gluon)/urdf/gluon.urdf" />
+
+  <!-- Load hardware interface -->
+  <node name="gluon_control" pkg="gluon_control" type="gluon_control_node"
+        output="screen" launch-prefix="$(arg launch_prefix)"/>
+
+  <!-- Load controller settings -->
+  <rosparam file="$(find gluon_control)/config/gluon_controllers.yaml" command="load"/>
+
+  <!-- Load controller manager -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller gluon_controller"/>
+
+  <!-- Convert joint states to /tf tranforms -->
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/ -->
+
+</launch>

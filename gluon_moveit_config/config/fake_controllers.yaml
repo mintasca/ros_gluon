@@ -1,0 +1,12 @@
+controller_list:
+  - name: fake_gluon_controller
+    joints:
+      - axis_joint_1
+      - axis_joint_2
+      - axis_joint_3
+      - axis_joint_4
+      - axis_joint_5
+      - axis_joint_6
+initial:  # Define initial robot poses.
+  - group: gluon
+    pose: home_pose

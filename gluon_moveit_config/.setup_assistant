@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: gluon
+    relative_path: urdf/gluon.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/gluon.srdf
+  CONFIG:
+    author_name: lison.li
+    author_email: lison.li@cloudminds.com
+    generated_timestamp: 1597906153
