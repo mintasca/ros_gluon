@@ -3,10 +3,29 @@ Gluon ROS packages
 This is the Gluon ROS package designed by Lison Li. These packages support Moveit!, RViz and LAN communication with Gluon.
 
 1. Download and install
-Download ros packages for gluon
+
+1.1 Install dependency package
+
+sudo apt-get install ros-melodic-ros-control-boilerplate
+sudo apt-get install ros-melodic-moveit-core
+sudo apt-get install ros-melodic-moveit-visual-tools
+sudo apt-get install ros-melodic-moveit-ros-planning-interface
+sudo apt-get install ros-melodic-moveit-ros-perception
+
+1.2 Download ros packages for gluon
+
+git clone https://github.com/innfos/ros_gluon.git
 
 then manually copy package folders gluon gluon_control gluon_moveit_config and cm_moveit into a catkin_ws/src.
 
+1.3 Download dependency sdk lib
+
+git clone https://github.com/innfos/innfos-cpp-sdk.git
+
+then manually copy innfos-cpp-sdk/sdk to catkin_ws/src/gluon/ActuatorController_SDK and catkin_ws/src/gluon_control/ActuatorController_SDK
+
+1.4 Build
+$ cd catkin_ws
 $ catkin_make
 
 2. Set up enviroment
