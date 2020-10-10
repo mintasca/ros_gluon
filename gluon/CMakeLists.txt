@@ -23,8 +23,6 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 include_directories(
-	include
-	include/${PROJECT_NAME}
 	${CMAKE_CURRENT_SOURCE_DIR}/ActuatorController_SDK/sdk/include
 	${catkin_INCLUDE_DIRS}
 )
@@ -36,8 +34,7 @@ generate_messages(
 )
 
 catkin_package(
-		INCLUDE_DIRS include
-		CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs sensor_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs sensor_msgs
 )
 
 find_package(roslaunch)
