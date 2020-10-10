@@ -11,6 +11,7 @@ sudo apt-get install ros-melodic-moveit-core
 sudo apt-get install ros-melodic-moveit-visual-tools
 sudo apt-get install ros-melodic-moveit-ros-planning-interface
 sudo apt-get install ros-melodic-moveit-ros-perception
+sudo apt-get install ros-melodic-joint-state-publisher-gui
 
 1.2 Download ros packages for gluon
 
