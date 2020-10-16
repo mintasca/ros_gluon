@@ -6,9 +6,11 @@ This is the Gluon ROS package designed by Lison Li. These packages support Movei
 
 1.1 Install dependency package
 
+sudo apt-get install ros-melodic-ros-controllers
 sudo apt-get install ros-melodic-ros-control-boilerplate
 sudo apt-get install ros-melodic-joint-state-publisher-gui
 sudo apt-get install ros-melodic-moveit
+sudo apt-get install ros-$ROS_DISTRO-rosparam-shortcuts
 
 1.2 Download ros packages for gluon
 
