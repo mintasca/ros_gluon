@@ -63,4 +63,4 @@ Cartesian Paths example and control gluon
 roslaunch moveit_tutorials move_group_interface_tutorial.launch
 
 4. General question
-Please reference ros_gluon 开发环境配置手册.docx
+Please reference ros_gluon_tutorial.docx
